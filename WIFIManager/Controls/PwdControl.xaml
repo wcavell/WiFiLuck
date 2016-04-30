@@ -1,0 +1,24 @@
+﻿<ContentDialog
+    x:Class="WIFIManager.Controls.PwdControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WIFIManager.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" VerticalAlignment="Center"
+    IsPrimaryButtonEnabled="True"
+    IsSecondaryButtonEnabled="True"
+    PrimaryButtonText="确认"
+    SecondaryButtonText="取消"
+    PrimaryButtonClick="PwdControl_OnPrimaryButtonClick"
+    SecondaryButtonClick="PwdControl_OnSecondaryButtonClick"
+    mc:Ignorable="d" >
+
+    <Grid Margin="0,20">
+       <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="Auto"/>
+           <ColumnDefinition Width="*"/>
+       </Grid.ColumnDefinitions>
+        <TextBlock Text="密码:" FontSize="18" VerticalAlignment="Center"/>
+        <PasswordBox Grid.Column="1" IsPasswordRevealButtonEnabled="True" Name="pwdBox"/>
+    </Grid>
+</ContentDialog>

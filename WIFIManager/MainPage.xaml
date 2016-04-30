@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="WIFIManager.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WIFIManager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cn="using:WIFIManager.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Foreground="BlueViolet" FontSize="35">
+            <Run Text="WiFi基友"/>
+            <Run Text="    刷新请下拉" FontSize="14"></Run>
+        </TextBlock>
+        <ListView Grid.Row="1" IsItemClickEnabled="True" ItemClick="OnItemClick" ItemsSource="{x:Bind Displays}">
+           <cn:PullToRefreshAdorner.Extender>
+               <cn:PullToRefreshExtender RefreshRequested="OnRefreshRequested"/>
+           </cn:PullToRefreshAdorner.Extender>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:WiFiNetworkDisplay">
+                    <StackPanel Margin="0,10,0,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{x:Bind WiFiImage}"/>
+                            <TextBlock Grid.Column="1">
+                                <Run Text="名称:"/>
+                                <Run Text="{x:Bind Ssid}"/>
+                            </TextBlock>
+                        </Grid>
+                        <TextBlock>
+                            <Run Text="服务器密码:"/>
+                            <Run Text="{x:Bind Pwd}"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="信号强度:"/>
+                            <Run Text="{x:Bind Rssi}"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="状态:"/>
+                            <Run Text="{x:Bind ConnectivityLevel}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

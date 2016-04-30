@@ -3,3 +3,6 @@
 ################################################################################
 
 /WIFIManager/Properties/Default.rd.xml
+/WIFIManager/obj
+/WIFIManager/WIFIManager_StoreKey.pfx
+/WIFIManager/Package.StoreAssociation.xml
