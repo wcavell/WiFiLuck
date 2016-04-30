@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.WiFi;
@@ -125,7 +126,7 @@ namespace WIFIManager
             set
             {
                 _pwd = value;
-                OnPropertyChanged("Pwd");
+                OnPropertyChanged();
             }
         }
         private WiFiAvailableNetwork availableNetwork;
@@ -144,14 +145,14 @@ namespace WIFIManager
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string name)
+        protected async void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            //var rootPage = MainPage.Current;
-            //await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            //{
-            var handler = PropertyChanged;
-            handler?.Invoke(this, new PropertyChangedEventArgs(name));
-            //});
+            var rootPage = MainPage.Current;
+            await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                var handler = PropertyChanged;
+                handler?.Invoke(this, new PropertyChangedEventArgs(name));
+            });
         }
     }
 }

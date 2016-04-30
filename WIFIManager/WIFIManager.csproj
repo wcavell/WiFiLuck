@@ -109,6 +109,7 @@
       <DependentUpon>PwdControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RefreshRequestedEventArgs.cs" />
+    <Compile Include="Controls\Toast.cs" />
     <Compile Include="Controls\VisualTreeHelperExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -122,7 +123,6 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="WIFIManager_StoreKey.pfx" />
-    <None Include="WIFIManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\open_1bar.png" />

@@ -42,7 +42,7 @@
                         </Grid>
                         <TextBlock>
                             <Run Text="服务器密码:"/>
-                            <Run Text="{x:Bind Pwd}"/>
+                            <Run Text="{Binding Pwd,Mode=TwoWay}"/>
                         </TextBlock>
                         <TextBlock>
                             <Run Text="信号强度:"/>
@@ -56,5 +56,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <ProgressBar Grid.Row="0" Grid.RowSpan="2" Height="16" IsIndeterminate="True" Visibility="{x:Bind LoadingVisibility}"/>
     </Grid>
 </Page>
